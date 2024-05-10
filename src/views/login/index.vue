@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" ref="loginFromRef">
+    <el-form class="login-form" ref="loginFromRef" :model="loginForm" :rules="loginRules">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
@@ -13,6 +13,7 @@
           placeholder="username"
           name="username"
           type="text"
+          v-model="loginForm.username"
         />
       </el-form-item>
 
@@ -23,6 +24,7 @@
         <el-input
           placeholder="password"
           name="password"
+          v-model="loginForm.password"
         />
         <span class="show-pwd">
           <span class="svg-container">
@@ -40,7 +42,30 @@
 
 <script setup>
 // 导入组件之后无需注册可直接使用
-import {} from 'vue'
+import { ref } from 'vue'
+import { validatePassword } from './rules'
+// 数据源
+const loginForm = ref({
+  username: 'super-admin',
+  password: '123456'
+})
+// 验证规则
+const loginRules = ref({
+  username: [
+    {
+      required: true,
+      trigger: 'blur',
+      message: '用户名不能为空'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      trigger: 'blur',
+      validator: validatePassword()
+    }
+  ]
+})
 </script>
 
 <style lang="scss" scoped>
