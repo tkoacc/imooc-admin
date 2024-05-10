@@ -34,7 +34,10 @@
         </span>
       </el-form-item>
 
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px"
+      <el-button  type="primary"
+                  style="width: 100%; margin-bottom: 30px"
+                  :loading="loading"
+                  @click="handleLogin"
         >登录</el-button
       >
     </el-form>
@@ -45,6 +48,7 @@
 // 导入组件之后无需注册可直接使用
 import { ref } from 'vue'
 import { validatePassword } from './rules'
+import { useStore } from 'vuex'
 // 数据源
 const loginForm = ref({
   username: 'super-admin',
@@ -76,6 +80,28 @@ const onChangePwdType = () => {
   } else {
     passwordType.value = 'password'
   }
+}
+
+// 登录动作处理
+const loading = ref(false)
+const loginFromRef = ref(null)
+const store = useStore()
+const handleLogin = () => {
+  loginFromRef.value.validate(valid => {
+    if (!valid) return
+
+    loading.value = true
+    store
+      .dispatch('user/login', loginForm.value)
+      .then(() => {
+        loading.value = false
+        // TODO: 登录后操作
+      })
+      .catch(err => {
+        console.log(err)
+        loading.value = false
+      })
+  })
 }
 </script>
 
