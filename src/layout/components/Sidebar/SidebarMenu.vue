@@ -7,6 +7,7 @@
     :active-text-color="$store.getters.cssVar.menuActiveText"
     :unique-opened="true"
     router
+    :collapse="!$store.getters.sidebarOpened"
   >
   <sidebar-item
       v-for="item in routes"
