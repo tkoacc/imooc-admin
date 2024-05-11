@@ -13,6 +13,7 @@
     "core-js": "^3.37.0",
     "element-plus": "1.0.2-beta.71",
     "md5": "^2.3.0",
+    "path-browserify": "^1.0.1",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2",
     "vuex": "^4.1.0"

@@ -1,13 +1,24 @@
-// const { defineConfig } = require('@vue/cli-service')
-// module.exports = defineConfig({
-//   transpileDependencies: true
-// })
+const { defineConfig } = require('@vue/cli-service')
 const path = require('path')
+const webpack = require('webpack')
+
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
-// https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
-module.exports = {
+
+module.exports = defineConfig({
+  configureWebpack: {
+    plugins: [
+      new webpack.DefinePlugin({
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false)
+      })
+    ],
+    resolve: {
+      fallback: {
+        path: require.resolve('path-browserify')
+      }
+    }
+  },
   chainWebpack(config) {
     // 设置 svg-sprite-loader
     config.module
@@ -38,3 +49,4 @@ module.exports = {
     }
   }
 }
+)
