@@ -1,3 +1,11 @@
 .el-avatar {
   --el-avatar-background-color: none;
+  background: none;
+}
+
+.el-input__wrapper {
+  background: transparent;
+  outline: transparent;
+  border: none;
+  box-shadow: none;
 }

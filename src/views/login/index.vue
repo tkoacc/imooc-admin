@@ -133,7 +133,7 @@ $cursor: #fff;
     }
 
     ::v-deep .el-input {
-      display: inline-block;
+      // display: inline-block;
       height: 47px;
       width: 85%;
 

@@ -1,4 +1,4 @@
-import variables from '@/styles/variables.scss'
+import variables from '@/styles/variables.module.scss'
 
 const getters = {
   token: state => state.user.token,

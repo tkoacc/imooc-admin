@@ -5,6 +5,8 @@
     <!-- 面包屑 -->
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <!-- 语言切换 -->
+      <lang-select class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -13,7 +15,7 @@
             :size="40"
             :src="$store.getters.userInfo.avatar"
           ></el-avatar>
-          <i class="el-icon-s-tools"></i>
+          <el-icon><Setting /></el-icon>
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
@@ -38,6 +40,7 @@ import {} from 'vue'
 import { useStore } from 'vuex'
 import Hamburger from '@/components/hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
+import LangSelect from '@/components/LangSelect'
 
 const store = useStore()
 const logout = () => {
@@ -87,6 +90,19 @@ const logout = () => {
         }
       }
     }
+
+    ::v-deep .right-menu-item {
+      display: inline-block;
+      padding: 0 18px 0 0;
+      font-size: 24px;
+      color: #5a5e66;
+      vertical-align: text-bottom;
+
+      &.hover-effect {
+        cursor: pointer;
+      }
+    }
+
   }
 }
 </style>

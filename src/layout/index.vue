@@ -24,13 +24,13 @@ import {} from 'vue'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar/index'
 import AppMain from './components/AppMain'
-import variables from '@/styles/variables.scss'
-
+import variables from '@/styles/variables.module.scss'
+// console.log(variables)
 </script>
 
 <style lang="scss" scoped>
 @import '~@/styles/mixin.scss';
-@import '~@/styles/variables.scss';
+@import '~@/styles/variables.module.scss';
 
 .app-wrapper {
   @include clearfix;
