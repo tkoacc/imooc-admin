@@ -28,9 +28,9 @@ const routes = computed(() => {
   const filterRoutes = filterRouters(router.getRoutes())
   return generateMenus(filterRoutes)
 })
-// console.log(JSON.stringify(routes.value))
 const activeMenu = computed(() => {
-  const { path } = router
-  return path
+  // const { path } = router
+  // return path
+  return router.currentRoute.value.path
 })
 </script>
