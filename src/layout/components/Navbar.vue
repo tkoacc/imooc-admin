@@ -5,9 +5,13 @@
     <!-- 面包屑 -->
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <!-- 搜索 -->
+      <HeaderSearch class="right-menu-item hover-effect" />
+      <!-- 全屏 -->
+      <Screenfull class="right-menu-item hover-effect" />
       <!-- 语言切换 -->
-      <theme-select class="right-menu-item hover-effect"></theme-select>
-      <lang-select class="right-menu-item hover-effect" />
+      <theme-select class="right-menu-item hover-effect"/>
+      <LangSelect class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -43,6 +47,8 @@ import Hamburger from '@/components/hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
 import ThemeSelect from '@/components/ThemeSelect'
+import Screenfull from '@/components/Screenfull'
+import HeaderSearch from '@/components/HeaderSearch'
 
 const store = useStore()
 const logout = () => {

@@ -23,6 +23,9 @@ importers:
       element-plus:
         specifier: 2.7.2
         version: 2.7.2(vue@3.4.27)
+      fuse.js:
+        specifier: 6.4.6
+        version: 6.4.6
       md5:
         specifier: ^2.3.0
         version: 2.3.0
@@ -32,6 +35,9 @@ importers:
       rgb-hex:
         specifier: ^4.1.0
         version: 4.1.0
+      screenfull:
+        specifier: 5.1.0
+        version: 5.1.0
       vue:
         specifier: ^3.4.27
         version: 3.4.27
@@ -2706,6 +2712,10 @@ packages:
   functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
 
+  fuse.js@6.4.6:
+    resolution: {integrity: sha512-/gYxR/0VpXmWSfZOIPS3rWwU8SHgsRTwWuXhyb2O6s7aRuVtHtxCkR33bNYu3wyLyNx/Wpv0vU7FZy8Vj53VNw==}
+    engines: {node: '>=10'}
+
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
@@ -4386,6 +4396,10 @@ packages:
   schema-utils@4.2.0:
     resolution: {integrity: sha512-L0jRsrPpjdckP3oPug3/VxNKt2trR8TcabrM6FOAAlvC/9Phcmm+cuAgTlxBqdBR1WJx7Naj9WHw+aOmheSVbw==}
     engines: {node: '>= 12.13.0'}
+
+  screenfull@5.1.0:
+    resolution: {integrity: sha512-dYaNuOdzr+kc6J6CFcBrzkLCfyGcMg+gWkJ8us93IQ7y1cevhQAugFsaCdMHb6lw8KV3xPzSxzH7zM1dQap9mA==}
+    engines: {node: '>=0.10.0'}
 
   select-hose@2.0.0:
     resolution: {integrity: sha512-mEugaLK+YfkijB4fx0e6kImuJdCIt2LxCRcbEYPqRGCs4F2ogyfZU5IAZRdjCP8JPq2AtdNoC/Dux63d9Kiryg==}
@@ -8410,6 +8424,8 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
+  fuse.js@6.4.6: {}
+
   gensync@1.0.0-beta.2: {}
 
   get-caller-file@2.0.5: {}
@@ -10050,6 +10066,8 @@ snapshots:
       ajv: 8.13.0
       ajv-formats: 2.1.1(ajv@8.13.0)
       ajv-keywords: 5.1.0(ajv@8.13.0)
+
+  screenfull@5.1.0: {}
 
   select-hose@2.0.0: {}
 
