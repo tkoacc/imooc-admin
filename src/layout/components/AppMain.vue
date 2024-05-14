@@ -56,7 +56,6 @@ watch(
  * 国际化 tags
  */
 watchSwitchLang(() => {
-  console.log('watch')
   store.getters.tagsViewList.forEach((route, index) => {
     store.commit('app/changeTagsView', {
       index,
