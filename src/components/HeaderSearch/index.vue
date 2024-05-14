@@ -27,49 +27,78 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { filterRouters } from '@/utils/route'
 import { useRouter } from 'vue-router'
 import Fuse from 'fuse.js'
 import { generateRoutes } from './FuseData'
+import { watchSwitchLang } from '@/utils/i18n'
 
 // 检索数据源
 const router = useRouter()
-const searchPool = computed(() => {
-  const filterRoutes = filterRouters(router.getRoutes())
-  return generateRoutes(filterRoutes)
+let searchPool = computed(() => {
+  const routes = filterRouters(router.getRoutes())
+  return generateRoutes(routes)
 })
 
 /**
  * 搜索库相关
  */
-const fuse = new Fuse(searchPool.value, {
+let fuse
+const initFuse = (searchPool) => {
+  if (!searchPool.value || searchPool.value.length === 0) {
+    console.error('searchPool is empty or undefined')
+    return
+  }
+  fuse = new Fuse(searchPool.value, {
   // 是否按优先级进行排序
-  shouldSort: true,
-  // 匹配长度超过这个值的才会被认为是匹配的
-  minMatchCharLength: 1,
-  // 将被搜索的键列表。 这支持嵌套路径、加权搜索、在字符串和对象数组中搜索。
-  // name：搜索的键
-  // weight：对应的权重
-  keys: [
-    {
-      name: 'title',
-      weight: 0.7
-    },
-    {
-      name: 'path',
-      weight: 0.3
-    }
-  ]
-})
+    shouldSort: true,
+    // 匹配长度超过这个值的才会被认为是匹配的
+    minMatchCharLength: 1,
+    // 将被搜索的键列表。 这支持嵌套路径、加权搜索、在字符串和对象数组中搜索。
+    // name：搜索的键
+    // weight：对应的权重
+    keys: [
+      {
+        name: 'title',
+        weight: 0.7
+      },
+      {
+        name: 'path',
+        weight: 0.3
+      }
+    ]
+  })
+}
+initFuse(searchPool)
 
 // 控制 search 显示
 const isShow = ref(false)
-// el-select 实例
-const headerSearchSelectRef = ref(null)
 const onShowClick = () => {
   isShow.value = !isShow.value
   headerSearchSelectRef.value.focus()
+}
+
+/**
+ * 监听 search 打开，处理 close 事件
+ */
+watch(isShow, val => {
+  if (val) {
+    headerSearchSelectRef.value.focus()
+    document.body.addEventListener('click', onClose)
+  } else {
+    document.body.removeEventListener('click', onClose)
+  }
+})
+// 关闭时间
+const headerSearchSelectRef = ref(null)
+/**
+ * 关闭 search 的处理事件
+ */
+const onClose = () => {
+  headerSearchSelectRef.value.blur()
+  isShow.value = false
+  searchOptions.value = []
 }
 
 // search 相关
@@ -88,6 +117,15 @@ const querySearch = (query) => {
 const onSelectChange = (val) => {
   router.push(val.path)
 }
+
+// 处理国际化
+watchSwitchLang(() => {
+  searchPool = computed(() => {
+    const routes = filterRouters(router.getRoutes())
+    return generateRoutes(routes)
+  })
+  initFuse(searchPool)
+})
 </script>
 
 <style lang="scss" scoped>
