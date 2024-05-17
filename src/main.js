@@ -15,13 +15,15 @@ import './styles/index.scss'
 import installIcons from '@/icons'
 // 导入路由鉴权
 import './permission'
+// filter
+import installFilter from '@/filter'
 
 const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
-// installElementPlus(app)
 installIcons(app)
+installFilter(app)
 app.use(store)
 app.use(router)
 app.use(i18n)
