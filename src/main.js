@@ -17,6 +17,7 @@ import installIcons from '@/icons'
 import './permission'
 // filter
 import installFilter from '@/filter'
+import installDirective from '@/directives'
 
 const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -24,6 +25,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 installIcons(app)
 installFilter(app)
+installDirective(app)
 app.use(store)
 app.use(router)
 app.use(i18n)
