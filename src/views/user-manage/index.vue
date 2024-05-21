@@ -4,6 +4,7 @@
       <div>
         <el-button type="primary"
         @click="onImportExcelClick"
+        v-permission="['importUser']"
         > {{ $t('msg.excel.importExcel') }}</el-button>
         <el-button type="success" @click="onToExcelClick">
           {{ $t('msg.excel.exportExcel') }}
@@ -50,13 +51,17 @@
           width="260"
         >
           <template #default="{ row }">
-            <el-button type="primary" size="small" @click="onShowClick(row._id)">{{
+            <el-button type="primary" size="small" @click="onShowClick(row._id)"
+            v-permission="['distributeRole']"
+            >{{
               $t('msg.excel.show')
             }}</el-button>
             <el-button type="info" size="small" @click="onShowRoleClick(row)">{{
               $t('msg.excel.showRole')
             }}</el-button>
-            <el-button type="danger" size="small" @click="onRemoveClick(row)">{{
+            <el-button type="danger" size="small" @click="onRemoveClick(row)"
+            v-permission="['removeUser']"
+            >{{
               $t('msg.excel.remove')
             }}</el-button>
           </template>
