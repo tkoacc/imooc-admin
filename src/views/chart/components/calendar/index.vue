@@ -6,20 +6,20 @@
     }"
   >
     <el-calendar class="calendar" v-model="currentDate">
-      <template #dateCell="{ data }">
-        <p :class="[data.isSelected ? 'is-selected' : '',calendarItemBgClass(data.day)]">
+      <template #date-cell="{ data }">
+        <p
+          :class="[
+            data.isSelected ? 'is-selected' : '',
+            calendarItemBgClass(data.day)
+          ]"
+        >
           <!-- 显示的内容 -->
-          {{
-            data.day
-              .split('-')
-              .slice(2)
-              .join('')
-          }}
+          {{ data.day.split('-').slice(2).join('') }}
           <br />
-    <!-- 当日金额 -->
-    <span class="amount" v-if="getTadayAmount(data.day)">
-      {{ getTadayAmount(data.day) }}
-    </span>
+          <!-- 当日金额 -->
+          <span class="amount" v-if="getTadayAmount(data.day)">
+            {{ getTadayAmount(data.day) }}
+          </span>
         </p>
       </template>
     </el-calendar>
@@ -51,13 +51,13 @@ const dateAmountList = ref({})
 /**
  * 返回指定日期收益数据，在日历中进行展示
  */
-const getTadayAmount = date => {
+const getTadayAmount = (date) => {
   // 读取缓存数据
   if (dateAmountList.value[date]) {
     return dateAmountList.value[date]
   }
   // 根据日期，获取当日数据
-  const tadayData = calendarListData.value.find(item => item.date === date)
+  const tadayData = calendarListData.value.find((item) => item.date === date)
   // 判断当日数据是否存在
   if (!tadayData) {
     return 0
@@ -72,7 +72,7 @@ const getTadayAmount = date => {
 /**
  * 返回日历的背景
  * */
-const calendarItemBgClass = day => {
+const calendarItemBgClass = (day) => {
   if (getTadayAmount(day) > 0) {
     return 'profit'
   } else if (getTadayAmount(day) < 0) {
@@ -84,7 +84,7 @@ const calendarItemBgClass = day => {
 /**
  * 触发日期改变的事件
  */
-watch(currentDate, val => {
+watch(currentDate, (val) => {
   emitter.emit('calendarChange', val)
 })
 </script>

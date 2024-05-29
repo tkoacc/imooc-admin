@@ -28,6 +28,7 @@ const getWordCloudData = async () => {
   const res = await getChartWordCloud()
   wordCloudData.value = res
   // 渲染图表
+  renderChart()
 }
 getWordCloudData()
 

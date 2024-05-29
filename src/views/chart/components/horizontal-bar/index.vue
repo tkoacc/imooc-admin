@@ -27,6 +27,7 @@ const getData = async date => {
   const { result } = await getChartTimeAmount(date)
   data.value = result
   // 渲染图表
+  renderChart()
 }
 getData()
 

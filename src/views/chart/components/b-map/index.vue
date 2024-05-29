@@ -2,7 +2,7 @@
   <el-card
     class="container"
   >
-    <div class="title">{{ $t('msg.chart.bmapChartTitle') }}</div>
+    <!-- <div class="title">{{ $t('msg.chart.bmapChartTitle') }}</div> -->
     <div ref="target" class="box"></div>
   </el-card>
 </template>

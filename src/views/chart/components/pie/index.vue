@@ -22,6 +22,7 @@ const getChartData = async () => {
   const res = await getChartPie()
   chartData.value = res
   // 渲染图表
+  renderChart()
 }
 getChartData()
 
